@@ -1,0 +1,56 @@
+.messageContainer{
+  display: flex;
+
+  .imgContainer{
+    padding: 0 10px;
+    align-self: flex-end;
+
+    img{
+      width: 50px;
+      border-radius: 50%;
+    }
+  }
+
+  .textContainer{
+    background-color: slategrey;
+    position: relative;
+    border-radius: 10px;
+    padding: 15px 50px 15px 20px ;
+    margin: 0 15px;
+
+    .name{
+      color: burlywood;
+      line-height: 1;
+      font-size: 18px;
+    }
+
+    .message{
+      color: white;
+    }
+
+
+    .time{
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      color: burlywood;
+    }
+
+    &:before{
+      position:absolute;
+      content:"";
+      left:-14px;
+      bottom: 5px;
+      transform: scaleY(0.5) rotate(45deg);
+      width:30px;
+      height:30px;
+      background: slategrey;
+    }
+  }
+
+
+
+
+
+}
+
