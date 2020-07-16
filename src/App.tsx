@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import Message from './messages/message'
-import Tasks from './tasks/tasks'
+import TasksWrapper from './tasksWrapper/tasksWrapper'
+import SpeakingInput from "./speakingInput/speakingInput";
 
 
 export type TaskType = {
@@ -34,7 +35,8 @@ function App() {
     return (
         <>
             <Message name={"Илья"} id={1} message={'npm start нажимал?'} imgSrc={'https://avatarko.ru/img/kartinka/33/igra_Minecraft_32501.jpg'} time={`${date.getHours()}:${date.getMinutes()} `}/>
-            <Tasks content={taskContent}></Tasks>
+            <TasksWrapper content={taskContent}></TasksWrapper>
+            <SpeakingInput />
         </>
     );
 }

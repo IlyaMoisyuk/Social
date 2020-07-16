@@ -1,0 +1,29 @@
+.hight{
+  background-color: red;
+}
+
+.middle{
+  background-color: yellow;
+}
+
+.low{
+  background-color: green;
+}
+
+.taskContainer{
+  padding: 5px;
+  margin: 5px 0;
+  position: relative;
+}
+
+.closeTask{
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  min-width: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import style from './task.module.scss';
+import style from './tasksWrapper.module.scss';
 import {TaskContentType} from './../App';
 import Task from "./task/task";
 
@@ -8,7 +8,7 @@ type PropsType = {
 }
 
 
-const Tasks: React.FC<PropsType> =  (props) => {
+const TasksWrapper: React.FC<PropsType> =  (props) => {
     let {content} = props;
     const [list, setList] = useState(content)
 
@@ -17,9 +17,9 @@ const Tasks: React.FC<PropsType> =  (props) => {
         <div className={style.taskWrapper}>
             <div className={style.menu}>
                 <input type='button' value='all' onClick={() => allItem()}/>
-                <input type='button' value='hight' onClick={() => hightItem()}/>
-                <input type='button' value='low' onClick={() => lowtItem()}/>
-                <input type='button' value='middle' onClick={() => midletItem()}/>
+                <input type='button' value='hight' onClick={() => filterItem('hight')}/>
+                <input type='button' value='low' onClick={() => filterItem('low')}/>
+                <input type='button' value='middle' onClick={() => filterItem('middle')}/>
             </div>
             {list.map( (el,key) => {
                return <Task key={el.id} id={el.id} title={el.n} priorety={el.p} deleteItem={(id) => deleteItem(id)}></Task>
@@ -28,21 +28,22 @@ const Tasks: React.FC<PropsType> =  (props) => {
     )
 
     function deleteItem(id: number) : void {
-        setList( list.filter(el => el.id !== id) )
+        content.forEach((el, i, arr) => {
+            if(el.id == id){
+                arr.splice(i,1);
+            }
+        })
+        let newMas = [...content];
+        setList(newMas)
     }
 
-    function hightItem(){
-        setList( content.filter( el => el.p === "hight"))
+    function filterItem(title: string) : void {
+        setList(content.filter( el => el.p === title))
     }
-    function lowtItem(){
-        setList( content.filter( el => el.p === "low"))
-    }
-    function midletItem(){
-        setList( content.filter( el => el.p === "middle"))
-    }
+
     function allItem(){
         setList(content)
     }
 }
 
-export default Tasks;
+export default TasksWrapper;
